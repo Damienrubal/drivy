@@ -226,8 +226,13 @@ function myfunction(){
 	priceDays= day*cars[i].pricePerDay;
 	priceDistance= rentals[i].distance*cars[i].pricePerKm;
 	finalPrice = priceDays+priceDistance;
-	//console.log(finalPrice);
-	rentals[i].price=finalPrice;
+	
+	
+	//Exercice4
+	if(rentals[i].options.deductibleReduction){
+		finalPrice=finalPrice+(day*4);
+		rentals[i].price=finalPrice;
+	}
 	
 	//Exercice3
 	commission=finalPrice*0.3;
@@ -244,16 +249,43 @@ function myfunction(){
 	rentals[i].commission.assistance=assistanceCommission;
 	rentals[i].commission.drivy=drivyCommission;
 	
-	//Exercice4
-	if(rentals[i].options.deductibleReduction){
-		finalPrice=finalPrice+(day*4);
-		console.log(finalPrice);
-		rentals[i].price=finalPrice;
+
+	console.log(finalPrice);
+	
+	//Exercice5
+	
+	
+	for (var j=0, l=actors[0].payment.length; j<l;j++){
+
+		switch(j){
+			case 0 : 
+			actors[i].payment[j].amount=finalPrice;
+			break;
+		
+			case 1 : 
+			actors[i].payment[j].amount=finalPrice-commission;
+			break;
+		
+			case 2 : 
+			actors[i].payment[j].amount=insuranceCommission;
+			break;
+		
+			case 3 : 
+			actors[i].payment[j].amount=assistanceCommission;
+			break;
+		
+			case 4 : 
+			actors[i].payment[j].amount=drivyCommission;
+			break;
+		}	
+	
 	}
 	
 	
+	
+	
 }
-
+	
 	
 }
 
