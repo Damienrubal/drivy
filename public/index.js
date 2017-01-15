@@ -170,59 +170,53 @@ console.log(rentals);
 console.log(actors);
 console.log(rentalModifications);
 
+// Exo 1 
 
+function time(dateUser){
+	
+   var date = dateUser;
+   var jour = date.substring(8,10);
+   return jour;
+}
 
 
 function myfunction(){
-	
-	
-	var pricePerDayP306 = cars[0].pricePerDay;
-	var pricePerDaySport =cars[1].pricePerDay; 
-	var pricePerDayBoxster=cars[2].pricePerDay; 
-	
-	var pricePerKmP306=cars[0].pricePerKm;
-	var pricePerKmSport=cars[1].pricePerKm;
-	var pricePerKmBoxster=cars[2].pricePerKm;
-	
-	var PriceDays=0;
+
+	var firstDay;
+	var lastDay;	
+	var day;
+	var priceDays=0;
 	var priceDistance=0;
 	var finalPrice=0;
 	
-	/*choice=parseInt( prompt('Selectionnez la voiture que vous avez loué : 
-	1- P306
-	2-Sport
-	3-Boxster '));*/
-	
-	//choice= prompt('Selectionnez la voiture louee ');
-	
+		
+	// pricePerDayP306 = cars[0].pricePerDay;
+	// pricePerDaySport =cars[1].pricePerDay; 
+	// pricePerDayBoxster=cars[2].pricePerDay; 
+	// pricePerKmP306=cars[0].pricePerKm;
+	// pricePerKmSport=cars[1].pricePerKm;
+	// pricePerKmBoxster=cars[2].pricePerKm;
 	
 		
+	for (var i=0, c=rentals.length; i<c;i++){
     
-	priceDays= 1*priceperDayP306;
-	priceDistance= rentals[0].distance*pricePerKmP306;
-	alert(priceDistance);
+	firstDay=time(rentals[i].pickupDate);
+	lastDay=time(rentals[i].returnDate);
+	day=Math.abs(parseInt((firstDay-lastDay)))+1;
+	
+	priceDays= day*cars[i].pricePerDay;
+	priceDistance= rentals[i].distance*cars[i].pricePerKm;
 	finalPrice = priceDays+priceDistance;
 	alert(finalPrice);
+	rentals[i].price=finalPrice;
 	
 	
-	/*priceDays= days*priceperDaySport;
-	priceDistance= distance*pricePerKmSport;
-	finalPrice = priceDays+priceDistance;
-	alert(finalPrice);
-	
-	priceDays= days*priceperDayBoxster;
-	priceDistance= distance*pricePerKmBoxster;
-	finalPrice = priceDays+priceDistance;
-	alert(finalPrice);*/
+	}
+
 	
 }
 
 myfunction();
-/*function calculate() {
-    var var1 = 2,
-        var2 = 3;
-    alert(var1 * var2);
-}
 
-calculate();
-*/
+
+//Exo 2 
