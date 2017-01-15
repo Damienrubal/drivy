@@ -204,10 +204,25 @@ function myfunction(){
 	lastDay=time(rentals[i].returnDate);
 	day=Math.abs(parseInt((firstDay-lastDay)))+1;
 	
+	//Exercice2
+	if (day>1 && day<4) {
+		cars[i].pricePerDay=cars[i].pricePerDay - cars[i].pricePerDay*0.1;
+		alert("decreases by 10%");
+	}else if (day>4 && day<10) {
+		cars[i].pricePerDay=cars[i].pricePerDay - cars[i].pricePerDay*0.3;
+		alert("decreases by 30%");
+	}
+	else if (day>10) {
+		cars[i].pricePerDay=cars[i].pricePerDay*0.5;
+		alert("decreases by 50%");
+	}
+		
+	
 	priceDays= day*cars[i].pricePerDay;
+	console.log(priceDays);
 	priceDistance= rentals[i].distance*cars[i].pricePerKm;
 	finalPrice = priceDays+priceDistance;
-	alert(finalPrice);
+	console.log(finalPrice);
 	rentals[i].price=finalPrice;
 	
 	
@@ -219,4 +234,5 @@ function myfunction(){
 myfunction();
 
 
-//Exo 2 
+	
+
